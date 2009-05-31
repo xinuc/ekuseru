@@ -3,14 +3,13 @@ module Ekuseru
     class Eks < ActionView::TemplateHandler
       include ActionView::TemplateHandlers::Compilable
       
-      def compile(template)
-        "setup\n" +
+      def compile template
+        "_ekuseru_setup\n" +
           "xls = Spreadsheet::Workbook.new\n" +
           "#{template.source}\n" +
-          "xls.render;"
+          "@_ekuseru_options.set_disposition(__filename ||= nil)\n" +
+          "xls.render\n"
       end
     end
   end
 end
-
-

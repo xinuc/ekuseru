@@ -4,7 +4,7 @@ require 'template_handler/options'
 
 class ActionView::Base
   private
-  def setup
-    @ekuseru_options = Ekuseru::TemplateHandler::Options.new controller
+  def _ekuseru_setup
+    @_ekuseru_options = Ekuseru::TemplateHandler::Options.new controller
   end
 end

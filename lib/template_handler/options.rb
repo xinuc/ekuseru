@@ -2,19 +2,13 @@ module Ekuseru
   module TemplateHandler
     class Options
 
-      def initialize(controller)
+      def initialize controller
         @controller = controller
-        set_content_type
-        set_disposition
-      end
-
-      def set_content_type
         @controller.response.content_type ||= Mime::XLS
       end
 
-      def set_disposition
-        #      filename = options[:filename] ? "filename=#{options[:filename]}" : nil
-        @controller.headers["Content-Disposition"] = ["attachment", nil].compact.join(';')
+      def set_disposition(filename = nil)
+        @controller.headers["Content-Disposition"] = ["attachment", filename ? "filename=\"#{filename}\"" : nil].compact.join(';')
       end
       
     end
