@@ -1,6 +1,6 @@
 module Ekuseru
   module TemplateHandler
-    class Eks < ActionView::TemplateHandler
+    class Eku < ActionView::TemplateHandler
       include ActionView::TemplateHandlers::Compilable
       
       def compile template

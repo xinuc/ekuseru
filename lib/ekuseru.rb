@@ -1,5 +1,5 @@
 require 'workbook/workbook'
-require 'template_handler/eks'
+require 'template_handler/eku'
 require 'template_handler/options'
 
 class ActionView::Base
