@@ -1,7 +1,10 @@
 = Ekuseru
 
-Plugin to generate Microsoft Excel documents with Rails. This plugin provides
-templating abilities to create the documents using Spreadsheet gem.
+Ekuseru is a plugin to generate Microsoft Excel documents with Rails. This plugin
+provides templating abilities to create excel documents using Spreadsheet gem.
+
+Having a template is very convenient, because we can define how our file looks
+like in the views, and we can access all helper methods defined in rails.
 
 == Installation
 
@@ -13,11 +16,11 @@ You will need to install Spreadsheet gem to use this plugin.
 
   config.gem "spreadsheet"
 
-* Install Spreadsheet gem, run:
+* Install Spreadsheet gem if you haven't, run:
 
   rake gems:install
 
-* or just install it with
+* or just install it with:
 
   sudo gem install spreadsheet
 
@@ -37,7 +40,9 @@ extract it to your vendor/plugins and rename it to 'ekuseru'
 
 === Controller
 
-Add <code>format.xls</code> in your controller.
+To generate xls document, add <code>format.xls</code> in your controller.
+
+Example:
 
   class ProductsController < ApplicationController
     def index
@@ -45,8 +50,7 @@ Add <code>format.xls</code> in your controller.
 
       respond_to do |format|
         format.html
-        format.xml  { render :xml => @products }
-        format.xls # to generate xls document
+        format.xls # add this line to generate xls document
       end
     end
 
@@ -56,37 +60,56 @@ Add <code>format.xls</code> in your controller.
 
 === Template
 
-This plugin will use .eku files as the template. With the example above,
-we will need to create 'index.xls.eku' in app/views/products.
+Ekuseru will use .eku files as the template. So, with the example above,
+we will need to create 'index.xls.eku' in app/views/products/.
+Basically it's just an ordinary ruby file.
+In the template, we will get a <code>xls</code> variable which is a
+Spreadsheet::Workbook object ready to be modified like whatever we want.
+
+Consult the Spreadsheet documentation to create the template.
+
+http://spreadsheet.rubyforge.org/files/GUIDE_txt.html
+
+You can set the filename sent to the user with <code>__filename</code> variable.
 
 In the template :
 
-  # set the filename set to the user with __filename variable
+  # set the filename sent to the user with __filename variable
+  # this is optional, if you don't set it, the name will be like products.xls
+
   __filename = "Products Catalog.xls"
 
-  # we get xls variable which is a workbook object
+  # we get 'xls' variable which is a Workbook object
   # then we can create some worksheet with create_worksheet method
+
   sheet1 = xls.create_worksheet
 
+  # fill the [0, 0] cell
+
   sheet1[0, 0] = "Products Catalog"
+
+  # Worksheet#row will return a Row object. We can modify it just like Array.
+  # this code will return the second row and fill the cells.
+
   sheet1.row(1).concat ["Name", "Price", "Stock", "Description"]
+
+  # we can access the instance variable we set in the controller, just like
+  # in erb template
 
   @products.each_with_index do |p, i|
     sheet1.update_row i+2, p.name, p.price, p.stock, p.description
   end
 
-  # add some formatting
+  # we can add some formatting using Spreadsheet::Format object
+
   title_format = Spreadsheet::Format.new(:color => :blue, :weight => :bold, :size => 18)
   sheet1.row(0).set_format(0, title_format)
 
   bold = Spreadsheet::Format.new(:weight => :bold)
   sheet1.row(1).default_format = bold
 
-You can set the filename sent to the user with <code>__filename</code> variable.
-In the template, you will get a <code>xls</code> variable which is a
-Spreadsheet::Workbook object. Consult the Spreadsheet documentation to create
-the template.
+That's it. Then you can create a link to the xls file if you want, like:
 
-http://spreadsheet.rubyforge.org/files/GUIDE_txt.html
+  <%= link_to 'Excel', products_path(:format => :xls) %>
 
 Copyright (c) 2009 Nugroho Herucahyono, released under the MIT license
