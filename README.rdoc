@@ -1,13 +1,92 @@
-Ekuseru
-======
+= Ekuseru
 
-Just created. Don't excpect anything yet..!!!
+Plugin to generate Microsoft Excel documents with Rails. This plugin provides
+templating abilities to create the documents using Spreadsheet gem.
 
+== Installation
 
-Example
-=======
+=== Spreadsheet gem
 
-Example goes here.
+You will need to install Spreadsheet gem to use this plugin.
 
+* Edit your config/environtment.rb, add:
+
+  config.gem "spreadsheet"
+
+* Install Spreadsheet gem, run:
+
+  rake gems:install
+
+* or just install it with
+
+  sudo gem install spreadsheet
+
+=== Ekuseru plugin
+
+Run the following command in your RAILS_ROOT:
+
+  ./script/plugin install git://github.com/xinuc/ekuseru.git
+
+Or, simply get the tarball at:
+
+  http://github.com/xinuc/ekuseru/tarball/master
+
+extract it to your vendor/plugins and rename it to 'ekuseru'
+
+== Usage
+
+=== Controller
+
+Add <code>format.xls</code> in your controller.
+
+  class ProductsController < ApplicationController
+    def index
+      @products = Product.all
+
+      respond_to do |format|
+        format.html
+        format.xml  { render :xml => @products }
+        format.xls # to generate xls document
+      end
+    end
+
+    ...
+
+  end
+
+=== Template
+
+This plugin will use .eku files as the template. With the example above,
+we will need to create 'index.xls.eku' in app/views/products.
+
+In the template :
+
+  # set the filename set to the user with __filename variable
+  __filename = "Products Catalog.xls"
+
+  # we get xls variable which is a workbook object
+  # then we can create some worksheet with create_worksheet method
+  sheet1 = xls.create_worksheet
+
+  sheet1[0, 0] = "Products Catalog"
+  sheet1.row(1).concat ["Name", "Price", "Stock", "Description"]
+
+  @products.each_with_index do |p, i|
+    sheet1.update_row i+2, p.name, p.price, p.stock, p.description
+  end
+
+  # add some formatting
+  title_format = Spreadsheet::Format.new(:color => :blue, :weight => :bold, :size => 18)
+  sheet1.row(0).set_format(0, title_format)
+
+  bold = Spreadsheet::Format.new(:weight => :bold)
+  sheet1.row(1).default_format = bold
+
+You can set the filename sent to the user with <code>__filename</code> variable.
+In the template, you will get a <code>xls</code> variable which is a
+Spreadsheet::Workbook object. Consult the Spreadsheet documentation to create
+the template.
+
+http://spreadsheet.rubyforge.org/files/GUIDE_txt.html
 
 Copyright (c) 2009 Nugroho Herucahyono, released under the MIT license
