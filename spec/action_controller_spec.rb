@@ -6,7 +6,6 @@ describe ActionController do
     @action_view = ActionView::Base.new
     @action_controller = ActionController::Base.new
     @action_view.controller = @action_controller
-    @handler = Ekuseru::TemplateHandler::Eku.new(@action_view)
     @action_controller.response = ActionController::Response.new
     @action_controller.headers ||= {}
     @action_view.send :_ekuseru_setup
