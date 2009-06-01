@@ -80,7 +80,7 @@ In the template :
   __filename = "Products Catalog.xls"
 
   # we get 'xls' variable which is a Workbook object
-  # then we can create some worksheet with create_worksheet method
+  # then we can create some worksheet to work with, with create_worksheet method
 
   sheet1 = xls.create_worksheet
 
@@ -88,7 +88,7 @@ In the template :
 
   sheet1[0, 0] = "Products Catalog"
 
-  # Worksheet#row will return a Row object. We can modify it just like Array.
+  # Worksheet#row will return a Row object. We can modify it just like an Array.
   # this code will return the second row and fill the cells.
 
   sheet1.row(1).concat ["Name", "Price", "Stock", "Description"]
