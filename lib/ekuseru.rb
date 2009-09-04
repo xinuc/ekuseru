@@ -1,4 +1,4 @@
-require 'workbook/workbook'
+require 'spreadsheet'
 require 'template_handler/eku'
 require 'template_handler/options'
 
