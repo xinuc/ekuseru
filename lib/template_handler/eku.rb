@@ -4,11 +4,15 @@ module Ekuseru
       include ActionView::TemplateHandlers::Compilable
       
       def compile template
-        "_ekuseru_setup\n" +
-          "xls = Spreadsheet::Workbook.new\n" +
-          "#{template.source}\n" +
-          "@_ekuseru_options.set_disposition(__filename ||= nil)\n" +
-          "xls.render\n"
+        %{
+          _ekuseru_setup
+          xls = Spreadsheet::Workbook.new
+          #{template.source}
+          @_ekuseru_options.set_disposition(__filename ||= nil)
+          io = StringIO.new
+          xls.write(io)
+          io.read
+        }
       end
     end
   end
