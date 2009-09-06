@@ -11,6 +11,7 @@ module Ekuseru
           @_ekuseru_options.set_disposition(__filename ||= nil)
           io = StringIO.new
           xls.write(io)
+          io.rewind
           io.read
         }
       end
