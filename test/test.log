@@ -1,0 +1,40 @@
+# Logfile created on Sat Sep 05 23:38:48 -0700 2009 by /
+
+
+Processing ExcelController#index to xls (for 0.0.0.0 at 2009-09-05 23:45:31) [GET]
+Completed in 130ms (View: 2 | 406 Not Acceptable [http://test.host/excel?format=xls]
+
+
+Processing ExcelController#index (for 0.0.0.0 at 2009-09-05 23:51:56) [GET]
+Rendering excel/index
+Completed in 147ms (View: 16 | 200 OK [http://test.host/excel]
+
+
+Processing ExcelController#index (for 0.0.0.0 at 2009-09-05 23:52:04) [GET]
+Rendering excel/index
+Completed in 147ms (View: 17 | 200 OK [http://test.host/excel]
+
+
+Processing ExcelController#index (for 0.0.0.0 at 2009-09-06 00:03:51) [GET]
+Rendering excel/index
+Completed in 19ms (View: 18 | 200 OK [http://test.host/excel]
+
+
+Processing ExcelController#index (for 0.0.0.0 at 2009-09-06 00:03:51) [GET]
+Rendering excel/index
+Completed in 53ms (View: 53 | 200 OK [http://test.host/excel]
+
+
+Processing ExcelController#index (for 0.0.0.0 at 2009-09-06 00:03:51) [GET]
+Rendering excel/index
+Completed in 14ms (View: 13 | 200 OK [http://test.host/excel]
+
+
+Processing ExcelController#index (for 0.0.0.0 at 2009-09-06 00:03:51) [GET]
+Rendering excel/index
+Completed in 13ms (View: 13 | 200 OK [http://test.host/excel]
+
+
+Processing ExcelController#index (for 0.0.0.0 at 2009-09-06 00:03:51) [GET]
+Rendering excel/index
+Completed in 18ms (View: 18 | 200 OK [http://test.host/excel]

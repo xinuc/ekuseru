@@ -1,0 +1,4 @@
+__filename = "Products Catalog.xls"
+
+sheet = xls.create_worksheet
+sheet[0, 0] = 42
