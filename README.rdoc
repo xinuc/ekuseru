@@ -1,14 +1,9 @@
 = Ekuseru
 
-Ekuseru is a gem to generate Microsoft Excel documents with Rails. This gem 
-provides templating abilities to create excel documents using Spreadsheet gem.
-
-Having a template is very convenient, because we can define how our file looks
-like in the views, and we can access all helper methods defined in rails.
+Ekuseru is a gem to generate Microsoft Excel documents with Rails.
+This gem provides templating abilities to create excel documents.
 
 == Installation
-
-=== Spreadsheet gem
 
 * Edit your Gemfile, add:
 
@@ -22,7 +17,7 @@ like in the views, and we can access all helper methods defined in rails.
 
 === Controller
 
-To generate xls document, add <code>format.xls</code> in your controller.
+To generate xls document, add <code>respond_to :xls</code> to your controller.
 
 Example:
 
@@ -43,6 +38,7 @@ Example:
 Ekuseru will use .eku files as the template. So, with the example above,
 we will need to create 'index.xls.eku' in app/views/products/.
 Basically it's just an ordinary ruby file.
+
 In the template, we will get a <code>xls</code> variable which is a
 Spreadsheet::Workbook object ready to be modified like whatever we want.
 
@@ -90,7 +86,7 @@ In the template :
 
 That's it. Then you can create a link to the xls file if you want, like:
 
-  <%= link_to 'Excel', products_path(:format => :xls) %>
+  <%= link_to 'Download as Excel', products_path(:format => :xls) %>
 
 == Credits
 
