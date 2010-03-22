@@ -21,3 +21,19 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "ekuseru"
+    gemspec.summary = "Export excel documents from Rails"
+    gemspec.description = "Ekuseru is a gem to generate Microsoft Excel documents with Rails." +
+      " This plugin provides templating abilities to create excel documents using Spreadsheet gem."
+    gemspec.email = "xinuc@xinuc.org"
+    gemspec.homepage = "http://github.com/xinuc/ekuseru"
+    gemspec.authors = ["Nugroho Herucahyono", "Jacob Rothstein"]
+    gemspec.add_dependency('spreadsheet')
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
+end
