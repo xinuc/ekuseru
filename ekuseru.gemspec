@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ekuseru}
-  s.version = "0.3.2"
+  s.version = "0.3.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nugroho Herucahyono", "Jacob Rothstein"]
@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "ekuseru.gemspec",
-     "init.rb",
      "install.rb",
      "lib/ekuseru.rb",
      "lib/template_handler/eku.rb",
