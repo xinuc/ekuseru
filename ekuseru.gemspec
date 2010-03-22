@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "ekuseru.gemspec",
      "init.rb",
      "install.rb",
      "lib/ekuseru.rb",
