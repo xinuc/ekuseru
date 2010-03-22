@@ -1,6 +1,6 @@
 = Ekuseru
 
-Ekuseru is a plugin to generate Microsoft Excel documents with Rails. This plugin
+Ekuseru is a gem to generate Microsoft Excel documents with Rails. This gem 
 provides templating abilities to create excel documents using Spreadsheet gem.
 
 Having a template is very convenient, because we can define how our file looks
@@ -10,31 +10,13 @@ like in the views, and we can access all helper methods defined in rails.
 
 === Spreadsheet gem
 
-You will need to install Spreadsheet gem to use this plugin.
+* Edit your Gemfile, add:
 
-* Edit your config/environtment.rb, add:
+  gem "ekuseru"
 
-  config.gem "spreadsheet"
+* then run
 
-* Install Spreadsheet gem if you haven't, run:
-
-  rake gems:install
-
-* or just install it with:
-
-  sudo gem install spreadsheet
-
-=== Ekuseru plugin
-
-Run the following command in your RAILS_ROOT:
-
-  ./script/plugin install git://github.com/xinuc/ekuseru.git
-
-Or, simply get the tarball at:
-
-  http://github.com/xinuc/ekuseru/tarball/master
-
-extract it to your vendor/plugins and rename it to 'ekuseru'
+  bundle install
 
 == Usage
 
@@ -45,13 +27,11 @@ To generate xls document, add <code>format.xls</code> in your controller.
 Example:
 
   class ProductsController < ApplicationController
+    respond_to :html, :xls
+
     def index
       @products = Product.all
-
-      respond_to do |format|
-        format.html
-        format.xls # add this line to generate xls document
-      end
+      respond_with @products
     end
 
     ...
@@ -68,7 +48,7 @@ Spreadsheet::Workbook object ready to be modified like whatever we want.
 
 Consult the Spreadsheet documentation to create the template.
 
-http://spreadsheet.rubyforge.org/files/GUIDE_txt.html
+http://spreadsheet.rubyforge.org/GUIDE_txt.html
 
 You can set the filename sent to the user with <code>__filename</code> variable.
 
@@ -111,5 +91,9 @@ In the template :
 That's it. Then you can create a link to the xls file if you want, like:
 
   <%= link_to 'Excel', products_path(:format => :xls) %>
+
+== Credits
+
+* Jacob Rothstein (http://github.com/jbr)
 
 Copyright (c) 2009 Nugroho Herucahyono, released under the MIT license
