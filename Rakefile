@@ -32,7 +32,7 @@ begin
     gemspec.email = "xinuc@xinuc.org"
     gemspec.homepage = "http://github.com/xinuc/ekuseru"
     gemspec.authors = ["Nugroho Herucahyono", "Jacob Rothstein"]
-    gemspec.add_dependency('spreadsheet')
+    gemspec.add_dependency('spreadsheet', ">=0.6")
   end
 rescue LoadError
   puts "Jeweler not available. Install it with: gem install jeweler"
