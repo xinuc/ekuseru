@@ -1,8 +1,10 @@
+require 'action_view/template/handler'
+
 module Ekuseru
   module TemplateHandler
-    class Eku < ActionView::TemplateHandler
-      include ActionView::TemplateHandlers::Compilable
-      
+    class Eku < ActionView::Template::Handler
+      include ActionView::Template::Handlers::Compilable
+
       def compile template
         %{
           _ekuseru_setup
