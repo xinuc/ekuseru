@@ -5,6 +5,8 @@ This gem provides templating abilities to create excel documents.
 
 == Installation
 
+=== Rails 3
+
 * Edit your Gemfile, add:
 
   gem "ekuseru"
@@ -12,6 +14,15 @@ This gem provides templating abilities to create excel documents.
 * then run
 
   bundle install
+
+=== Rails 2
+
+Ekuseru master branch now support rails 3 and is NOT backward compatible.
+To use ekuseru in rails 2, install it as plugin :
+
+* cd vendor/plugins
+* git clone git://github.com/xinuc/ekuseru.git
+* git checkout remotes/origin/rails2 -b rails2
 
 == Usage
 
