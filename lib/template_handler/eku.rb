@@ -14,7 +14,9 @@ module Ekuseru
           io = StringIO.new
           xls.write(io)
           io.rewind
-          io.read
+          string = io.read
+          string.respond_to?(:force_encoding) ?
+            string.force_encoding(Encoding::ASCII_8BIT) : string
         }
       end
     end
