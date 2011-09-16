@@ -5,7 +5,7 @@ require 'spreadsheet'
 require 'template_handler/eku'
 require 'template_handler/options'
 
-ActionView::Template.register_template_handler 'eku', Ekuseru::TemplateHandler::Eku
+ActionView::Template.register_template_handler :eku, Ekuseru::TemplateHandler::Eku.new
 
 class ActionView::Base
   private

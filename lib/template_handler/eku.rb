@@ -2,10 +2,8 @@ require 'action_view'
 
 module Ekuseru
   module TemplateHandler
-    class Eku < ActionView::TemplateHandler
-      include ActionView::TemplateHandlers::Compilable
-
-      def compile template
+    class Eku
+      def call template
         %{
           _ekuseru_setup
           xls = Spreadsheet::Workbook.new
