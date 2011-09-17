@@ -102,5 +102,3 @@ That's it. Then you can create a link to the xls file if you want, like:
 == Credits
 
 * Jacob Rothstein (http://github.com/jbr)
-
-Copyright (c) 2009 Nugroho Herucahyono, released under the MIT license
