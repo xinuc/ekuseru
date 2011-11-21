@@ -4,19 +4,20 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "ekuseru"
-  s.version = "0.3.10"
+  s.name = %q{ekuseru}
+  s.version = "0.3.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nugroho Herucahyono", "Jacob Rothstein"]
-  s.date = "2011-11-21"
-  s.description = "Ekuseru is a gem to generate Microsoft Excel documents with Rails. This plugin provides templating abilities to create excel documents using Spreadsheet gem."
-  s.email = "xinuc@xinuc.org"
+  s.date = %q{2011-11-21}
+  s.description = %q{Ekuseru is a gem to generate Microsoft Excel documents with Rails. This plugin provides templating abilities to create excel documents using Spreadsheet gem.}
+  s.email = %q{xinuc@xinuc.org}
   s.extra_rdoc_files = [
     "README.rdoc"
   ]
   s.files = [
     "Gemfile",
+    "Gemfile.lock",
     "MIT-LICENSE",
     "README.rdoc",
     "Rakefile",
@@ -31,12 +32,27 @@ Gem::Specification.new do |s|
     "test/test.log",
     "test/test_helper.rb"
   ]
-  s.homepage = "http://github.com/xinuc/ekuseru"
+  s.homepage = %q{http://github.com/xinuc/ekuseru}
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
-  s.summary = "Export excel documents from Rails"
+  s.rubygems_version = %q{1.5.3}
+  s.summary = %q{Export excel documents from Rails}
 
-  s.add_dependency('rails', ">= 3.0")
-  s.add_dependency('spreadsheet', ">= 0.6")
-  s.add_development_dependency 'jeweler'
+  if s.respond_to? :specification_version then
+    s.specification_version = 3
+
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<ekuseru>, [">= 0"])
+      s.add_development_dependency(%q<jeweler>, [">= 0"])
+      s.add_runtime_dependency(%q<spreadsheet>, [">= 0.6"])
+    else
+      s.add_dependency(%q<ekuseru>, [">= 0"])
+      s.add_dependency(%q<jeweler>, [">= 0"])
+      s.add_dependency(%q<spreadsheet>, [">= 0.6"])
+    end
+  else
+    s.add_dependency(%q<ekuseru>, [">= 0"])
+    s.add_dependency(%q<jeweler>, [">= 0"])
+    s.add_dependency(%q<spreadsheet>, [">= 0.6"])
+  end
 end
+
