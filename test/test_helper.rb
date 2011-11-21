@@ -5,7 +5,6 @@ require 'test/unit'
 require 'action_controller'
 require 'action_controller/test_case'
 
-require File.join(File.dirname(__FILE__), '..', 'init.rb')
 
 ActionController::Routing::Routes.draw do |map|
   match "/index" => "ekuseru#index"
