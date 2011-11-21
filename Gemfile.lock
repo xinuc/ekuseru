@@ -39,12 +39,7 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    git (1.2.5)
     i18n (0.5.0)
-    jeweler (1.6.4)
-      bundler (~> 1.0)
-      git (>= 1.2.5)
-      rake
     json (1.6.1)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -89,4 +84,3 @@ PLATFORMS
 
 DEPENDENCIES
   ekuseru!
-  jeweler
